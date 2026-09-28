@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-demo
+spec:
+  replicas: 2
+  progressDeadlineSeconds: 60
+
+  selector:
+    matchLabels:
+      app: gitops-demo
+
+  template:
+    metadata:
+      labels:
+        app: gitops-demo
+
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80
+
+          env:
+            - name: APP_VERSION
+              value: "v1"
+
+          command:
+            - /bin/sh
+            - -c
+
+          args:
+            - |
+              cat <<EOF > /usr/share/nginx/html/index.html
+              <!doctype html>
+              <html>
+                <head>
+                  <meta charset="utf-8">
+                  <title>Argo CD Lab</title>
+                </head>
+                <body>
+                  <h1>Argo CD GitOps Lab</h1>
+                  <h2>Application version: ${APP_VERSION}</h2>
+                  <p>Managed from Git.</p>
+                </body>
+              </html>
+              EOF
+              exec nginx -g 'daemon off;'
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 5
