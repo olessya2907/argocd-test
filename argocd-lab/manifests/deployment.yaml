@@ -24,7 +24,7 @@ spec:
 
           env:
             - name: APP_VERSION
-              value: "v1"
+              value: "v2"
 
           command:
             - /bin/sh
