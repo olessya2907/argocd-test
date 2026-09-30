@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+    repoURL: https://github.com/olessya2907/argocd-test.git
     targetRevision: main
     path: argocd-lab/manifests
 
