@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: nginx:9.9.9-does-not-exist
+          image: nginx:1.27-alpine
           ports:
             - containerPort: 80
 
