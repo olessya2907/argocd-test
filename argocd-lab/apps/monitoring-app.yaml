@@ -41,6 +41,18 @@ spec:
             ruleSelector: {}
             ruleNamespaceSelector: {}
 
+        kubeControllerManager:
+          enabled: false
+
+        kubeScheduler:
+          enabled: false
+
+        kubeEtcd:
+          enabled: false
+
+        kubeProxy:
+          enabled: false
+
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
