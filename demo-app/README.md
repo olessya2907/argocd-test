@@ -46,3 +46,5 @@ demo-app/
 - [x] Step 1: Dockerize the app, verify locally
 - [ ] Step 2: GitHub Actions — build and push image to GHCR on every push
 - [ ] Step 3: Kubernetes manifests + Argo CD — GitOps deployment, v1 → v2 demo
+
+Test change to trigger the workflow.
