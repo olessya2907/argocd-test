@@ -15,21 +15,22 @@ The version comes from the `APP_VERSION` environment variable (default `v1`).
 
 ## Run locally
 
-Build the image:
+One command to build and start:
+
+./run.sh
+
+Then open http://localhost:8080/ and http://localhost:8080/health.
+
+One command to stop and clean up:
+
+./stop.sh
+
+Manual commands (the scripts do the same):
 
 docker build -t demo-app:v1 .
-
-Run the container:
-
 docker run -d --name demo -p 8080:8080 demo-app:v1
-
-Check it works:
-
 curl localhost:8080/
 curl localhost:8080/health
-
-Stop and remove the container:
-
 docker stop demo && docker rm demo
 
 ## Project layout
