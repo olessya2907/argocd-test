@@ -41,6 +41,15 @@ demo-app/
 ├── Dockerfile # Image recipe: Python 3.12 slim + app
 └── .dockerignore # Keeps .git and caches out of the image
 
+flowchart TD
+A["1. Code\nMacBook + VS Code"] -->|git push| B["2. GitHub\nrepo: argocd-test"]
+B -->|on push| C["3. GitHub Actions\nbuild multi-arch image"]
+C -->|docker push| D["4. GHCR\nimage: demo-app:latest\nlinux/amd64 + linux/arm64"]
+D -->|pull| E["5. Kubernetes (minikube)\nDeployment, 2 replicas"]
+B -->|watch path: demo-app/k8s| F["6. Argo CD\nApplication, auto-sync"]
+F -->|sync| E
+E -->|port-forward 8080| G["7. Browser\nlocalhost:8080\n'Hello from demo-app v2!'"]
+
 ## Roadmap
 
 - [x] Step 1: Dockerize the app, verify locally
