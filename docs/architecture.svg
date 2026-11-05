@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="680" viewBox="0 0 1280 680" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2FA38B"/>
+    </marker>
+    <marker id="arrowPlum" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#C9408D"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="1260" height="660" rx="16" fill="#EAF2FA"/>
+
+  <text x="640" y="40" text-anchor="middle" font-size="19" font-weight="700" fill="#1F2D3D">demo-app delivery pipeline</text>
+
+  <!-- Row 1 boxes -->
+  <g>
+    <rect x="30" y="55" width="180" height="115" rx="10" fill="#ffffff" stroke="#1F2D3D" stroke-width="2"/>
+    <text x="120" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">Developer</text>
+    <text x="120" y="115" text-anchor="middle" font-size="12" fill="#5A6B7C">laptop + editor</text>
+    <text x="120" y="136" text-anchor="middle" font-size="12" fill="#5A6B7C">code + git push</text>
+
+    <rect x="250" y="55" width="180" height="115" rx="10" fill="#ffffff" stroke="#1F2D3D" stroke-width="2"/>
+    <text x="340" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">GitHub</text>
+    <text x="340" y="115" text-anchor="middle" font-size="12" fill="#5A6B7C">source of truth</text>
+    <text x="340" y="136" text-anchor="middle" font-size="12" fill="#5A6B7C">this repo</text>
+
+    <rect x="470" y="55" width="180" height="115" rx="10" fill="#ffffff" stroke="#1F2D3D" stroke-width="2"/>
+    <text x="560" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">GitHub Actions</text>
+    <text x="560" y="115" text-anchor="middle" font-size="12" fill="#5A6B7C">build multi-arch image</text>
+    <text x="560" y="136" text-anchor="middle" font-size="12" fill="#5A6B7C">on every push</text>
+
+    <rect x="690" y="55" width="180" height="115" rx="10" fill="#ffffff" stroke="#1F2D3D" stroke-width="2"/>
+    <text x="780" y="92" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">GHCR</text>
+    <text x="780" y="115" text-anchor="middle" font-size="12" fill="#5A6B7C">image registry</text>
+    <text x="780" y="136" text-anchor="middle" font-size="12" fill="#5A6B7C">demo-app:latest</text>
+  </g>
+
+  <!-- Row 1 arrows -->
+  <line x1="214" y1="112" x2="244" y2="112" stroke="#2FA38B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="229" y="102" text-anchor="middle" font-size="12" fill="#1F2D3D">git push</text>
+
+  <line x1="434" y1="112" x2="464" y2="112" stroke="#2FA38B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="449" y="102" text-anchor="middle" font-size="12" fill="#1F2D3D">on push</text>
+
+  <line x1="654" y1="112" x2="684" y2="112" stroke="#2FA38B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="669" y="102" text-anchor="middle" font-size="12" fill="#1F2D3D">docker push</text>
+
+  <!-- GitHub -> Argo CD (watch) -->
+  <line x1="340" y1="170" x2="340" y2="318" stroke="#C9408D" stroke-width="2.5" stroke-dasharray="7,5" marker-end="url(#arrowPlum)"/>
+  <text x="352" y="245" font-size="12" fill="#1F2D3D">watches demo-app/k8s</text>
+
+  <!-- GHCR -> K8s (pull) -->
+  <line x1="780" y1="170" x2="780" y2="268" stroke="#2FA38B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="792" y="222" font-size="12" fill="#1F2D3D">pull image</text>
+
+  <!-- Argo CD box -->
+  <rect x="250" y="330" width="180" height="120" rx="10" fill="#ffffff" stroke="#C9408D" stroke-width="2.5"/>
+  <text x="340" y="368" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">Argo CD</text>
+  <text x="340" y="391" text-anchor="middle" font-size="12" fill="#5A6B7C">Application: demo-app</text>
+  <text x="340" y="412" text-anchor="middle" font-size="12" fill="#5A6B7C">auto-sync · prune · self-heal</text>
+
+  <!-- Argo CD -> K8s -->
+  <line x1="434" y1="390" x2="494" y2="390" stroke="#2FA38B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="464" y="380" text-anchor="middle" font-size="12" fill="#1F2D3D">sync</text>
+
+  <!-- Kubernetes cluster box -->
+  <rect x="500" y="280" width="540" height="300" rx="12" fill="#ffffff" stroke="#1F2D3D" stroke-width="2"/>
+  <text x="770" y="308" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">Kubernetes (minikube)</text>
+
+  <rect x="650" y="322" width="240" height="62" rx="8" fill="#EAF2FA" stroke="#1F2D3D" stroke-width="1.5"/>
+  <text x="770" y="347" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2D3D">Deployment: demo-app</text>
+  <text x="770" y="366" text-anchor="middle" font-size="11" fill="#5A6B7C">replicas: 2 · image: demo-app:latest</text>
+
+  <rect x="540" y="408" width="220" height="62" rx="8" fill="#ffffff" stroke="#2FA38B" stroke-width="2"/>
+  <text x="650" y="433" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2D3D">Pod 1</text>
+  <text x="650" y="452" text-anchor="middle" font-size="11" fill="#5A6B7C">1/1 Running · APP_VERSION=v2</text>
+
+  <rect x="780" y="408" width="220" height="62" rx="8" fill="#ffffff" stroke="#2FA38B" stroke-width="2"/>
+  <text x="890" y="433" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2D3D">Pod 2</text>
+  <text x="890" y="452" text-anchor="middle" font-size="11" fill="#5A6B7C">1/1 Running · APP_VERSION=v2</text>
+
+  <rect x="650" y="494" width="240" height="62" rx="8" fill="#EAF2FA" stroke="#1F2D3D" stroke-width="1.5"/>
+  <text x="770" y="519" text-anchor="middle" font-size="13" font-weight="700" fill="#1F2D3D">Service: demo-app</text>
+  <text x="770" y="538" text-anchor="middle" font-size="11" fill="#5A6B7C">ClusterIP · port 80 → 8080</text>
+
+  <line x1="710" y1="384" x2="668" y2="404" stroke="#2FA38B" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="830" y1="384" x2="872" y2="404" stroke="#2FA38B" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="470" x2="738" y2="490" stroke="#2FA38B" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="840" y1="470" x2="802" y2="490" stroke="#2FA38B" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- port-forward to browser -->
+  <line x1="1040" y1="525" x2="1078" y2="525" stroke="#2FA38B" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1059" y="515" text-anchor="middle" font-size="11" fill="#1F2D3D">port-forward</text>
+
+  <rect x="1082" y="465" width="168" height="120" rx="10" fill="#ffffff" stroke="#1F2D3D" stroke-width="2"/>
+  <text x="1166" y="503" text-anchor="middle" font-size="15" font-weight="700" fill="#1F2D3D">Browser</text>
+  <text x="1166" y="526" text-anchor="middle" font-size="12" fill="#5A6B7C">localhost:8080</text>
+  <text x="1166" y="547" text-anchor="middle" font-size="11" fill="#2FA38B" font-weight="700">Hello from demo-app v2!</text>
+
+  <!-- footer -->
+  <text x="640" y="648" text-anchor="middle" font-size="13" fill="#5A6B7C">Git = desired state &#160;&#160;•&#160;&#160; Argo CD = reconciliation &#160;&#160;•&#160;&#160; Kubernetes = live state</text>
+</svg>
